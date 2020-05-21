@@ -10,14 +10,41 @@ export const Header = styled.div`
   margin: 30px auto 30px;
   max-width: 100%;
   text-align: center;
+  h1 {
+    font-size: 50px;
+  }
   p {
     font-size: 25px;
+  }
+`;
+
+export const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 250px 0;
+
+  img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: 0 auto;
+
+    animation: loading 1s linear infinite;
+    @keyframes loading {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
 `;
 
 export const ContainerList = styled.div`
   display: flex;
   justify-content: center;
+  margin: 30px 0;
 `;
 
 export const Pokemon = styled.ul`

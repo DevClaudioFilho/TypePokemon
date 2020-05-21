@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import { RouteComponentProps } from 'react-router-dom';
 import api from '../../service/api';
 
 import {
   Container,
   Header,
   Pokemon,
+  Loading,
   ContainerList,
   Pokebola,
   Stats,
@@ -22,39 +24,49 @@ interface PokemonI {
   height: number;
 }
 
-const Pokemons: React.FC = () => {
+type PropsI = RouteComponentProps<{ id: string; type: string }>;
+
+const Pokemons: React.FC<PropsI> = ({ match }) => {
   const [pokemons, setPokemons]: any[] = useState([]);
+  const [type, setType]: any[] = useState([]);
 
   useEffect(() => {
     async function loadPokemons(): Promise<any> {
-      // const { id } = props.match.params;
+      const { id, type } = match.params;
 
-      const typeReturn = await api.get(`type/1/`);
+      setType(type);
+
+      const typeReturn = await api.get(`type/${id}/`);
 
       const getPokemonName = await typeReturn.data.pokemon;
 
-      const infoPokemons = [];
+      const infoPokemons: Array<any> = [];
 
       for (let i = 0; i < getPokemonName.length; i++) {
         const { name } = getPokemonName[i].pokemon;
-        const getInfo = await api.get(`pokemon/${name}`);
 
+        const getInfo = await api.get(`pokemon/${name}`);
         infoPokemons.push(getInfo.data);
       }
 
       return setPokemons(infoPokemons);
     }
     loadPokemons();
-  }, []);
+  }, [match.params]);
 
   return (
     <Container>
       <Header>
-        <h1>Pokemons tipo teste</h1>
-        <p>this is all pokemon type teste</p>
+        <h1>Pokemons List</h1>
+        <p>{`this is all pokemon type ${type}`}</p>
       </Header>
 
       <ContainerList>
+        {!pokemons.length && (
+          <Loading>
+            <img src={PokebolaImg} alt="Pokebola" />
+          </Loading>
+        )}
         <Pokemon>
           {pokemons.map((pokemon: PokemonI) => (
             <li key={pokemon.id}>

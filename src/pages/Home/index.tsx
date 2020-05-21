@@ -32,103 +32,103 @@ const Home: React.FC = () => {
       <Pokebola>
         <Types>
           <li>
-            <Link to={`/${1}`}>
+            <Link to={`/${1}/normal`}>
               <img src={Normal} alt="Normal" />
             </Link>
           </li>
           <li>
-            <Link to={`/${2}`}>
+            <Link to={`/${2}/fighting`}>
               <img src={Fighting} alt="Fighting" />
             </Link>
           </li>
           <li>
-            <Link to={`/${3}`}>
+            <Link to={`/${3}/flying`}>
               <img src={Flying} alt="Flying" />
             </Link>
           </li>
           <li>
-            <Link to={`/${4}`}>
+            <Link to={`/${4}/poison`}>
               <img src={Poison} alt="Poison" />
             </Link>
           </li>
           <li>
-            <Link to={`/${5}`}>
+            <Link to={`/${5}/ground`}>
               <img src={Ground} alt="Ground" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${6}`}>
+            <Link to={`/${6}/rock`}>
               <img src={Rock} alt="Rock" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${7}`}>
+            <Link to={`/${7}/bug`}>
               <img src={Bug} alt="Bug" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${8}`}>
+            <Link to={`/${8}/ghost`}>
               <img src={Ghost} alt="Ghost" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${9}`}>
+            <Link to={`/${9}/steel`}>
               <img src={Steel} alt="Steel" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${10}`}>
+            <Link to={`/${10}/fire`}>
               <img src={Fire} alt="Fire" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${11}`}>
+            <Link to={`/${11}/water`}>
               <img src={Water} alt="Water" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${12}`}>
+            <Link to={`/${12}/grass`}>
               <img src={Grass} alt="Grass" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${13}`}>
+            <Link to={`/${13}/electric`}>
               <img src={Electric} alt="Electric" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${14}`}>
+            <Link to={`/${14}/psychic`}>
               <img src={Psychic} alt="Psychic" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${15}`}>
+            <Link to={`/${15}/ice`}>
               <img src={Ice} alt="Ice" />
             </Link>
           </li>
 
           <li>
-            <Link to={`/${16}`}>
+            <Link to={`/${16}/dragon`}>
               <img src={Dragon} alt="Dragon" />
             </Link>
           </li>
           <li>
-            <Link to={`/${17}`}>
+            <Link to={`/${17}/dark`}>
               <img src={Dark} alt="Dark" />
             </Link>
           </li>
           <li>
-            <Link to={`/${18}`}>
+            <Link to={`/${18}/fairy`}>
               <img src={Fairy} alt="Fairy" />
             </Link>
           </li>
