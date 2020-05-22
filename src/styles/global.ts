@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
     *{
     margin: 0;
     padding:0;
@@ -14,20 +15,28 @@ export default createGlobalStyle`
     height: 100%;
     
   }
+
+
   body {
     background:#a4b0be;
     color:#FFF;
     -webkit-font-smoothing:antialiased;
-  
+  }
+  body, input, button {
+    font-family: 'Sigmar One', cursive;
   }
   border-style, input, button{
-    font-family:Arial, cursive;
     font-size:16px;
   }
-  h1,h2,h3,h4,h5,h6, strong{
-    font-family: Arial, cursive;
-    font-weight:100px;
+
+  a {
+    text-decoration: none;
   }
+
+  ul {
+    list-style: none
+  }
+
   button{
     cursor:pointer;
   }

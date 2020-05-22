@@ -91,6 +91,10 @@ export const Types = styled.ul`
         height: 45px;
         line-height: 45px;
         border-radius: 50%;
+
+        :hover {
+          filter: brightness(80%);
+        }
       }
     }
     :nth-child(1) {
