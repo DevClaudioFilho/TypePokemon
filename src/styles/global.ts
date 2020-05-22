@@ -29,6 +29,10 @@ export default createGlobalStyle`
     font-size:16px;
   }
 
+  p, h1, h2 {
+    cursor:default;
+  }
+
   a {
     text-decoration: none;
   }
