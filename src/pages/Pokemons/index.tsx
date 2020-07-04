@@ -24,7 +24,7 @@ interface PokemonI {
   height: number;
 }
 
-type PropsI = RouteComponentProps<{ id: string; type: string }>;
+type PropsI = RouteComponentProps<{ id: string; pokeType: string }>;
 
 const Pokemons: React.FC<PropsI> = ({ match }) => {
   const [pokemons, setPokemons]: any[] = useState([]);
@@ -32,9 +32,9 @@ const Pokemons: React.FC<PropsI> = ({ match }) => {
 
   useEffect(() => {
     async function loadPokemons(): Promise<any> {
-      const { id, type } = match.params;
+      const { id, pokeType } = match.params;
 
-      setType(type);
+      setType(pokeType);
 
       const typeReturn = await api.get(`type/${id}/`);
 
@@ -43,17 +43,15 @@ const Pokemons: React.FC<PropsI> = ({ match }) => {
       const infoPokemons: Array<any> = [];
 
       async function getPokemons(name: string): Promise<any> {
-        console.log(name);
         const getInfo = await api.get(`pokemon/${name}`);
         await infoPokemons.push(getInfo.data);
       }
 
-      for (let i = 0; i < getPokemonName.length; i++) {
+      for (let i = 0; i < getPokemonName.length; i + 1) {
         const { name } = getPokemonName[i].pokemon;
         getPokemons(name);
       }
 
-      console.log(infoPokemons);
       return setPokemons(infoPokemons);
     }
     loadPokemons();
