@@ -42,13 +42,18 @@ const Pokemons: React.FC<PropsI> = ({ match }) => {
 
       const infoPokemons: Array<any> = [];
 
-      for (let i = 0; i < getPokemonName.length; i++) {
-        const { name } = getPokemonName[i].pokemon;
-
+      async function getPokemons(name: string): Promise<any> {
+        console.log(name);
         const getInfo = await api.get(`pokemon/${name}`);
-        infoPokemons.push(getInfo.data);
+        await infoPokemons.push(getInfo.data);
       }
 
+      for (let i = 0; i < getPokemonName.length; i++) {
+        const { name } = getPokemonName[i].pokemon;
+        getPokemons(name);
+      }
+
+      console.log(infoPokemons);
       return setPokemons(infoPokemons);
     }
     loadPokemons();
