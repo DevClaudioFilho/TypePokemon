@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
     *{
     margin: 0;
     padding:0;
@@ -23,7 +22,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing:antialiased;
   }
   body, input, button {
-    font-family: 'Sigmar One', cursive;
+    font-family: sans-serif;
   }
   border-style, input, button{
     font-size:16px;
