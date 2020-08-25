@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { RouteComponentProps } from 'react-router-dom';
-import api from '../../service/api';
+import axios from 'axios';
 
 import {
   Container,
@@ -24,35 +24,49 @@ interface PokemonI {
   height: number;
 }
 
-type PropsI = RouteComponentProps<{ id: string; pokeType: string }>;
+type PropsI = RouteComponentProps<{ id: string; type: string }>;
 
 const Pokemons: React.FC<PropsI> = ({ match }) => {
   const [pokemons, setPokemons]: any[] = useState([]);
-  const [type, setType]: any[] = useState([]);
+  const [types, setTypes]: any[] = useState([]);
+
+  const url = 'https://pokeapi.co/api/v2';
 
   useEffect(() => {
     async function loadPokemons(): Promise<any> {
-      const { id, pokeType } = match.params;
+      const { type } = match.params;
 
-      setType(pokeType);
+      setTypes(type);
 
-      const typeReturn = await api.get(`type/${id}/`);
+      const typeReturn = await axios.get(`${url}/type/${type}`);
 
       const getPokemonName = await typeReturn.data.pokemon;
 
-      const infoPokemons: Array<any> = [];
+      console.log(getPokemonName.length);
 
-      async function getPokemons(name: string): Promise<any> {
-        const getInfo = await api.get(`pokemon/${name}`);
-        await infoPokemons.push(getInfo.data);
+      //  async function getPokemons(name: string): Promise<any> {
+      //   const getInfo = await axios.get(`${url}/pokemon/${name}`);
+      //   await infoPokemons.push(getInfo.data);
+      // }
+
+      const names: any = [];
+
+      for (let x = 0; x < getPokemonName.length; x++) {
+        const { name } = getPokemonName[x].pokemon;
+
+        names.push(name);
+        // getPokemons(name);
       }
 
-      for (let i = 0; i < getPokemonName.length; i + 1) {
-        const { name } = getPokemonName[i].pokemon;
-        getPokemons(name);
-      }
+      const teste = await Promise.all(
+        names.map(async (index: any) => {
+          const response = await axios.get(`${url}/pokemon/${index}`);
 
-      return setPokemons(infoPokemons);
+          return response.data;
+        }),
+      );
+
+      return setPokemons(teste);
     }
     loadPokemons();
   }, [match.params]);
@@ -61,7 +75,7 @@ const Pokemons: React.FC<PropsI> = ({ match }) => {
     <Container>
       <Header>
         <h1>Pokemons List</h1>
-        <p>{`this is all pokemon type ${type}`}</p>
+        <p>{`this is all pokemon type ${types}`}</p>
       </Header>
 
       <ContainerList>
